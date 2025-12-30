@@ -4,29 +4,17 @@
 
 # OVERVIEW
 
-[TITAN's](https://titansoftwork.net) Spoofer is designed to protect your Main/Alt accounts from Byfron's HWID tracking & Roblox's Ban API. To use this effectively, a VPN is essential.
+[TITAN's](https://titansoftwork.net) Spoofer is designed to protect your Main/Alt accounts from Byfron's account detection system's & Roblox's BanAsync component. To use this effectively, a VPN is heavily recomended.
 
-The Spoofer prevents the other accounts on your PC from being banned when exploiting (Scenario: You exploit on alt, spoof, switch to main -> Only alt gets banned)
+For a more detailed guide, join the Discord above and read the guides provided.
 
-With Roblox integrating a ban API and combining Hyperion (Byfron's) detection mechanisms, exploit developers have begun offering paid spoofers. I've decided to give the community a **free, open-source** solution.  
-
-High-Level Overview of Roblox's System's in motion 
+High-Level Overview of Roblox's System's in motion;
 
 ![Diagram](./Images/TDiagram.png)
 
 ### HOW IT WORKS
 
-The spoofer deletes Roblox & all relevant files then changes hardware identifiers (HWID's) that Roblox specifically checks. Then, (Assuming you have Bloxstrap or Fishstrap) will automatically re-install Roblox. This is done purely in usermode and any altered values will reset on PC restart.
-
-If you'd like any functionality stripped/removed the source is extremely clear and can be easily altered & recompiled for personal use.
-
-<br>
-
-# FEATURES
-- **Ban API/Byfron Fingerprinting Bypass** - Spoofer changes all values used in it's HWID check.
-- **Byfron HWID Ban Removal** – This'll get around the extremely rare HWID bans.
-- **Automated Roblox Reinstallation** – Uses **Bloxstrap/Fishstrap** for reinstallation, with **RobloxInstaller** as a fallback.  
-- **Antiban Guide** – Includes a full guide on avoiding bans and understanding how the Ban API & Byfron works, available in the **[TITAN Discord](https://hub.titansoftwork.net)**.  
+At a high level, the Spoofer modifies components to disrupt Roblox's components, for more detail the source code is available and the PDB for the executable is also available within the Discord.
 
 <br>
 
