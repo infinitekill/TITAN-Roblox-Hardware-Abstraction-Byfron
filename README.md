@@ -14,7 +14,7 @@ High-Level Overview of Roblox's System's in motion;
 
 ### HOW IT WORKS
 
-At a high level, the Spoofer modifies components to disrupt Roblox's components, for more detail the source code is available and the PDB for the executable is also available within the Discord.
+The Spoofer modifies components to disrupt Roblox's components, for more detail the source code is available and the PDB for the executable is also available within the Discord.
 
 <br>
 
