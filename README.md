@@ -1,10 +1,10 @@
-# **TITAN Spoofer** (Roblox)
+# **TITAN** (Roblox)
 
 [![Discord](https://img.shields.io/discord/1240608336005828668?label=TITAN%20Softworks&logo=discord&color=5865F2&style=flat)](https://discord.gg/yUWyvT9JyP)
 
 # OVERVIEW
 
-[TITAN's](https://titansoftwork.net) Spoofer is designed to protect your Main/Alt accounts from Byfron's account detection system's & Roblox's BanAsync component. To use this effectively, a VPN is heavily recomended.
+[TITAN's](https://titansoftwork.net) is designed to protect your Main/Alt accounts from Byfron's account detection system's & Roblox's BanAsync component. To use this effectively, a VPN is heavily recomended.
 
 For a more detailed guide, join the Discord above and read the guides provided.
 
@@ -14,7 +14,7 @@ High-Level Overview of Roblox's System's in motion;
 
 ### HOW IT WORKS
 
-The Spoofer modifies components to disrupt Roblox's components, for more detail the source code is available and the PDB for the executable is also available within the Discord.
+The hardware abstraction tool modifies components to disrupt Roblox's components, for more detail the source code is available and the PDB for the executable is also available within the Discord.
 
 <br>
 
@@ -29,8 +29,8 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
 ### BUILDING FROM SOURCE:
 1. **Clone the Repository**  
     ```sh
-    git clone https://github.com/TITAN-Softwork-Solutions/Roblox-Spoofer-Byfron.git
-    cd TITAN-Spoofer
+    git clone https://github.com/dutchpsycho/TITAN-Roblox-Hardware-Abstraction-Byfron.git
+    cd TITAN-Roblox-Hardware-Abstraction-Byfron
     ```
 
 2. **Open the Solution File (`.sln`)**  
