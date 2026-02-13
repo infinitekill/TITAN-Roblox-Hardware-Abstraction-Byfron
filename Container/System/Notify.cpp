@@ -63,8 +63,14 @@ namespace TITAN {
         const auto ttl = escapeXml_(title);
         const auto msg = escapeXml_(message);
 
-        std::wstring xml =
-            L"<toast duration='short'>"
+        std::wstring toastTag = L"<toast";
+        if (!actions.empty()) {
+            toastTag += L" scenario='reminder'>";
+        } else {
+            toastTag += L" duration='short'>";
+        }
+
+        std::wstring xml = toastTag +
             L"<visual>"
             L"<binding template='ToastGeneric'>"
             L"<text>" + ttl + L"</text>"
@@ -304,7 +310,11 @@ namespace TITAN {
         return out;
     }
 
-    bool Notification::PromptSpoofConsentAndWait(bool& agreed) {
+    bool Notification::PromptSpoofConsentAndWait(
+        bool& agreed,
+        const std::wstring& title = L"Roblox closed",
+        const std::wstring& body = L"Spoof?"
+    ) {
         HANDLE hYes = CreateEventW(nullptr, TRUE, FALSE, L"Local\\TITAN_SPOOF_YES");
         HANDLE hDismiss = CreateEventW(nullptr, TRUE, FALSE, L"Local\\TITAN_SPOOF_DISMISS");
 
@@ -317,8 +327,8 @@ namespace TITAN {
         HANDLE handles[2] = { hYes, hDismiss };
 
         NotifyDesktop(
-            L"Roblox closed",
-            L"Spoof?",
+            title.c_str(),
+            body.c_str(),
             {
                 { L"Yes", L"spoof" },
                 { L"Dismiss", L"dismiss" }
