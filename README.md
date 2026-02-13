@@ -35,15 +35,13 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
 
 2. **Open the Solution File (`.sln`)**  
     - Navigate to the cloned repository.  
-    - Open `TITAN Spoofer.sln` using **Visual Studio**.  
+    - Open `TITAN Spoofer.sln` using **Visual Studio**.
+    - - If it ask you to resolve missing components issues, change them from **Ignore** to **Retarget to Platform Toolset** 
 
 3. **Build the Project**  
-    - If it ask you to resolve missing components issues, change them from **Ignore** to **Retarget to Platform Toolset** 
+    - Choose your build configuration. Using **Debug** instead of **Release** is recommended.
     - Click **Build Solution**.  
-    - The compiled executable (`.exe`) will be located in the `/Release` directory.
-
-4. Move the compiled executable to the `/Installer/` directory with the Installer & Uninstaller.bat files & Install the Spoofer.
-
+    - The compiled executable (`tspf.exe`) will be located in the `/Release` or `/Debug` directory depending on your build configuration.
 <br>
 
 # API
