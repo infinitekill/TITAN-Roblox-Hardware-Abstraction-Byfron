@@ -30,7 +30,6 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
 1. **Clone the Repository**  
     ```sh
     git clone https://github.com/infinitekill/TITAN-Roblox-Hardware-Abstraction-Byfron.git
-    cd TITAN-Roblox-Hardware-Abstraction-Byfron
     ```
 
 2. **Open the Solution File (`.sln`)**  
