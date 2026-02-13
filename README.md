@@ -39,7 +39,9 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
 
 3. **Build the Project**  
     - Click **Build Solution**.  
-    - The compiled executable (`.exe`) will be located in the `/Release` directory.  
+    - The compiled executable (`.exe`) will be located in the `/Release` directory.
+
+4. Move the compiled executable to the `/Installer/` directory with the Installer & Uninstaller.bat files & Install the Spoofer.
 
 <br>
 
