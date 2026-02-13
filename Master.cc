@@ -73,7 +73,7 @@ int TspfLaunchRoutine(bool quiet) {
             WMI::WmiSpoofer::run();
             Installer::Install(wd);
 
-            std::this_thread::sleep_for(std::chrono::seconds(3));
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             TsService::__TerminateRoblox();
         }
         catch (...) {
@@ -146,7 +146,7 @@ int SafeRun(bool quiet) {
             std::cerr << "[!] Unknown fatal exception, restarting...\n";
         }
 
-        std::this_thread::sleep_for(std::chrono::seconds(3));
+        std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
 
