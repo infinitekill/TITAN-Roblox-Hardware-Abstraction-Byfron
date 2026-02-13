@@ -64,8 +64,6 @@ int TspfLaunchRoutine(bool quiet) {
     TITAN::Watchdog wd(L"RobloxPlayerBeta.exe");
 
     auto runSpoof = [&](const wchar_t* context) {
-        wd.pause();
-
         bool success = true;
         try {
             TsService::__TerminateRoblox();
@@ -86,15 +84,15 @@ int TspfLaunchRoutine(bool quiet) {
             success ? L"Spoof complete" : L"Spoof failed",
             success ? std::wstring(context) : L"One or more operations failed."
         );
-
-        wd.resume();
     };
 
     wd.setOnAllExited([&]() {
+        wd.pause();
         bool agreed = false;
         if (notif.PromptSpoofConsentAndWait(agreed) && agreed) {
            runSpoof(L"Spoof done.");
         }
+        wd.resume();
     });
 
     if (!wd.start()) {
@@ -107,6 +105,7 @@ int TspfLaunchRoutine(bool quiet) {
         std::wcout << L"[*] TITAN Spoofer running... press Ctrl+C to exit.\n";
 
     if (!IsRobloxRunning()) {
+        wd.pause();
         bool agreed = false;
         if (notif.PromptSpoofConsentAndWait(agreed,
             L"Initial spoof ready",
@@ -116,6 +115,7 @@ int TspfLaunchRoutine(bool quiet) {
         } else {
             notif.NotifyDesktop(L"Spoof declined", L"Waiting for Roblox to close.");
         }
+        wd.resume();
     } else {
         notif.NotifyDesktop(L"Roblox detected", L"Close it to start the spoofing process.");
     }
