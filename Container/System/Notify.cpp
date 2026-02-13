@@ -312,8 +312,8 @@ namespace TITAN {
 
     bool Notification::PromptSpoofConsentAndWait(
         bool& agreed,
-        const std::wstring& title = L"Roblox closed",
-        const std::wstring& body = L"Spoof?"
+        const std::wstring& title,
+        const std::wstring& body
     ) {
         HANDLE hYes = CreateEventW(nullptr, TRUE, FALSE, L"Local\\TITAN_SPOOF_YES");
         HANDLE hDismiss = CreateEventW(nullptr, TRUE, FALSE, L"Local\\TITAN_SPOOF_DISMISS");
