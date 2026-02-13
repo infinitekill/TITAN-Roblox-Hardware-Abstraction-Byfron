@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Project: TITAN Spoofer
  * Codename: TSPF
  * Author: Damon
@@ -21,6 +21,34 @@
 
 #include <iostream>
 #include <thread>
+#include <tlhelp32.h>
+#include <wchar.h>   
+
+bool IsRobloxRunning() {
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (snapshot == INVALID_HANDLE_VALUE) {
+        return false;  // Assume not running on error
+    }
+
+    PROCESSENTRY32 pe32;
+    pe32.dwSize = sizeof(PROCESSENTRY32);
+
+    if (!Process32First(snapshot, &pe32)) {
+        CloseHandle(snapshot);
+        return false;
+    }
+
+    bool found = false;
+    do {
+        if (_wcsicmp(pe32.szExeFile, L"RobloxPlayerBeta.exe") == 0) {
+            found = true;
+            break;
+        }
+    } while (Process32Next(snapshot, &pe32));
+
+    CloseHandle(snapshot);
+    return found;
+}
 
 int TspfLaunchRoutine(bool quiet) {
     TITAN::TsBlockHandle guard;
@@ -35,37 +63,39 @@ int TspfLaunchRoutine(bool quiet) {
 
     TITAN::Watchdog wd(L"RobloxPlayerBeta.exe");
 
-    wd.setOnAllExited([&]() {
+    auto runSpoof = [&](const wchar_t* context) {
         wd.pause();
 
-        bool agreed = false;
+        bool success = true;
+        try {
+            TsService::__TerminateRoblox();
+            TraceCleaner::run();
+            MAC::MacSpoofer::run();
+            Registry::RegSpoofer::run();
+            WMI::WmiSpoofer::run();
+            Installer::Install(wd);
 
-        if (notif.PromptSpoofConsentAndWait(agreed) && agreed) {
-            bool success = true;
-
-            try {
-                TsService::__TerminateRoblox();
-                TraceCleaner::run();
-                MAC::MacSpoofer::run();
-                Registry::RegSpoofer::run();
-                WMI::WmiSpoofer::run();
-                Installer::Install(wd);
-
-                std::this_thread::sleep_for(std::chrono::seconds(3));
-                TsService::__TerminateRoblox();
-            }
-            catch (...) {
-                success = false;
-            }
-
-            notif.NotifyDesktop(
-                success ? L"Spoof complete" : L"Spoof failed",
-                success ? L"Done." : L"One or more operations failed."
-            );
+            std::this_thread::sleep_for(std::chrono::seconds(3));
+            TsService::__TerminateRoblox();
+        }
+        catch (...) {
+            success = false;
         }
 
+        notif.NotifyDesktop(
+            success ? L"Spoof complete" : L"Spoof failed",
+            success ? std::wstring(context) : L"One or more operations failed."
+        );
+
         wd.resume();
-        });
+    };
+
+    wd.setOnAllExited([&]() {
+        bool agreed = false;
+        if (notif.PromptSpoofConsentAndWait(agreed) && agreed) {
+           runSpoof(L"Spoof done.");
+        }
+    });
 
     if (!wd.start()) {
         if (!quiet)
@@ -74,7 +104,21 @@ int TspfLaunchRoutine(bool quiet) {
     }
 
     if (!quiet)
-        std::wcout << L"[*] Watchdog running... press Ctrl+C to exit.\n";
+        std::wcout << L"[*] TITAN Spoofer running... press Ctrl+C to exit.\n";
+
+    if (!IsRobloxRunning()) {
+        bool agreed = false;
+        if (notif.PromptSpoofConsentAndWait(agreed,
+            L"Initial spoof ready",
+            L"Spoof?"
+        ) && agreed) {
+            runSpoof(L"Spoof done.");
+        } else {
+            notif.NotifyDesktop(L"Spoof declined", L"Waiting for Roblox to close.");
+        }
+    } else {
+        notif.NotifyDesktop(L"Roblox detected", L"Close it to start the spoofing process.");
+    }
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::seconds(10));
@@ -102,7 +146,7 @@ int SafeRun(bool quiet) {
             std::cerr << "[!] Unknown fatal exception, restarting...\n";
         }
 
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::this_thread::sleep_for(std::chrono::seconds(3));
     }
 }
 
