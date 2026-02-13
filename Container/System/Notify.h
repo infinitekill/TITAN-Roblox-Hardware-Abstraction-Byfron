@@ -19,7 +19,11 @@ namespace TITAN {
         // Call at program start. If this instance was launched via titan-notify: URL,
         // it signals the primary instance and returns true (caller should exit).
         static bool HandleProtocolIfPresentAndExitEarly();
-        bool PromptSpoofConsentAndWait(bool& agreed);
+        bool PromptSpoofConsentAndWait(
+            bool& agreed,
+            const std::wstring& title = L"Roblox closed",
+            const std::wstring& body = L"Spoof?"
+        );
 
     private:
         bool ensureShortcut_();
