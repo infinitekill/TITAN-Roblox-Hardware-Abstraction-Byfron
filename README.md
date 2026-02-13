@@ -20,7 +20,7 @@ The hardware abstraction tool modifies components to disrupt Roblox's components
 
 # INSTALL & SETUP
 ### DOWNLOAD
-For prebuilt binaries (.exe's), download the latest version from the Discord ``#spoofer`` channel **[TITAN Discord](https://hub.titansoftwork.net).**  
+For prebuilt binaries (.exe's), download the latest version from the Discord ``#spoofer`` channel **[TITAN Discord](https://hub.titansoftwork.com)**. 
 
 ### COMPILING REQUIREMENTS:
 - **Visual Studio** (Latest Version)  
