@@ -36,7 +36,7 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
 2. **Open the Solution File (`.sln`)**  
     - Navigate to the cloned repository.  
     - Open `TITAN Spoofer.sln` using **Visual Studio**.
-    - - If it ask you to resolve missing components issues, change them from **Ignore** to **Retarget to Platform Toolset** 
+    - If it ask you to resolve missing components issues, change them from **Ignore** to **Retarget to Platform Toolset** 
 
 3. **Build the Project**  
     - Choose your build configuration. Using **Debug** instead of **Release** is recommended.
