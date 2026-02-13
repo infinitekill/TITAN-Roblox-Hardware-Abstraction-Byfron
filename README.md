@@ -29,7 +29,7 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
 ### BUILDING FROM SOURCE:
 1. **Clone the Repository**  
     ```sh
-    git clone https://github.com/dutchpsycho/TITAN-Roblox-Hardware-Abstraction-Byfron.git
+    git clone https://github.com/8damon/TITAN-Roblox-Hardware-Abstraction-Byfron.git
     cd TITAN-Roblox-Hardware-Abstraction-Byfron
     ```
 
