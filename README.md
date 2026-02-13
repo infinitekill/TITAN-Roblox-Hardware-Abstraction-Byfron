@@ -29,7 +29,7 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
 ### BUILDING FROM SOURCE:
 1. **Clone the Repository**  
     ```sh
-    git clone https://github.com/8damon/TITAN-Roblox-Hardware-Abstraction-Byfron.git
+    git clone https://github.com/infinitekill/TITAN-Roblox-Hardware-Abstraction-Byfron.git
     cd TITAN-Roblox-Hardware-Abstraction-Byfron
     ```
 
@@ -38,6 +38,7 @@ For prebuilt binaries (.exe's), download the latest version from the Discord ``#
     - Open `TITAN Spoofer.sln` using **Visual Studio**.  
 
 3. **Build the Project**  
+    - If it ask you to resolve missing components issues, change them from **Ignore** to **Retarget to Platform Toolset** 
     - Click **Build Solution**.  
     - The compiled executable (`.exe`) will be located in the `/Release` directory.
 
